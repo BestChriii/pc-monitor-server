@@ -182,6 +182,8 @@ def heartbeat():
         state["pc_online"]      = True
         state["last_heartbeat"] = time.time()
         cmd = state["pending_cmd"]
+        if cmd:
+            state["pending_cmd"] = None  # consuma il comando, non ripetere
 
     return jsonify({"cmd": cmd})
 

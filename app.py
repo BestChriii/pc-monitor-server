@@ -410,9 +410,7 @@ def cmd_done():
             with lock:
                 kbd = confirm_keyboard("open-exec")
                 mid = send(
-                    f"🚀 <b>Trovato:</b> <code>{display_name}</code>
-"
-                    f"Vuoi veramente avviarlo?",
+                    f"🚀 <b>Trovato:</b> <code>{display_name}</code>\nVuoi veramente avviarlo?",
                     reply_markup=kbd
                 )
                 state["confirm_pending"] = {
@@ -422,8 +420,8 @@ def cmd_done():
                     "expires": time.time() + 30
                 }
         else:
-            send(f"⚠️ Nessuna app trovata per <b>{result}</b>.
-Controlla il nome e riprova.")
+            send(f"\u26a0\ufe0f Nessuna app trovata per <b>{result}</b>.\nControlla il nome e riprova.")
+
 
     elif cmd == "open":
         if ok:

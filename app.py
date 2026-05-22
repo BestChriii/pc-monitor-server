@@ -13,6 +13,12 @@ SECRET_KEY = os.environ.get("SECRET_KEY", "changeme123")
 
 TELEGRAM_API = f"https://api.telegram.org/bot{BOT_TOKEN}"
 
+# Start counter per il ping
+
+@app.before_request
+def start_timer():
+    g.request_start = time.perf_counter()
+
 # ── State ─────────────────────────────────────────────────────────────────────
 state = {
     "pc_online":      False,
@@ -468,8 +474,8 @@ def set_webhook():
 
 @app.route("/ping")
 def ping():
-    return f"pong - {(time.perf_counter() - request_start)*1000:.2f} ms"
-    
+    return f"Il tuo ping attuale é di {(time.perf_counter() - g.request_start)*1000:.2f}ms"
+
 @app.route("/")
 def index():
     return "applicazione online"

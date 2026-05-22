@@ -468,7 +468,7 @@ def set_webhook():
 
 @app.route("/ping")
 def ping():
-    return "pong"
+    return f"pong - {time.perf_counter()*1000:.2f} ms"
 
 @app.route("/")
 def index():

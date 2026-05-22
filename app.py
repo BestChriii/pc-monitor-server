@@ -468,11 +468,11 @@ def set_webhook():
 
 @app.route("/ping")
 def ping():
-    return f"pong - {time.perf_counter()*1000:.2f} ms"
-
+    return f"pong - {(time.perf_counter() - request_start)*1000:.2f} ms"
+    
 @app.route("/")
 def index():
-    return "ok"
+    return "applicazione online"
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))

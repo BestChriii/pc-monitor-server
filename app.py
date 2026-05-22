@@ -2,7 +2,7 @@ import os
 import time
 import threading
 from datetime import datetime
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, g
 import requests
 
 app = Flask(__name__)
